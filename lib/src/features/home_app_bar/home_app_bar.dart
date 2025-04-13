@@ -1,6 +1,8 @@
 import 'package:ecommerce_app_firebase_riverpod/src/features/home_app_bar/shopping_cart_icon.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
+import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../common_widgets/action_text_button.dart';
 import '../../constants/breakpoints.dart';
 import '../../models/app_user.dart';
@@ -48,35 +50,25 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ActionTextButton(
               key: MoreMenuButton.ordersKey,
               text: 'Orders'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const OrdersListScreen(),
-                ),
-              ),
+              // onPressed: () => Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     fullscreenDialog: true,
+              //     builder: (_) => const OrdersListScreen(),
+              //   ),
+              // ),
+              // onPressed: () => context.go('/orders'),
+              onPressed: () => context.goNamed(AppRoute.orders.name),
             ),
             ActionTextButton(
               key: MoreMenuButton.accountKey,
               text: 'Account'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const AccountScreen(),
-                ),
-              ),
+              onPressed: () => context.goNamed(AppRoute.account.name),
             ),
           ] else
             ActionTextButton(
               key: MoreMenuButton.signInKey,
               text: 'Sign In'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const EmailPasswordSignInScreen(
-                    formType: EmailPasswordSignInFormType.signIn,
-                  ),
-                ),
-              ),
+              onPressed: () => context.goNamed(AppRoute.signIn.name),
             )
         ],
       );
