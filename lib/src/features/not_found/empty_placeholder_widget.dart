@@ -1,5 +1,7 @@
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
+import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../common_widgets/primary_button.dart';
 import '../../constants/app_sizes.dart';
 
@@ -24,10 +26,10 @@ class EmptyPlaceholderWidget extends StatelessWidget {
             ),
             gapH32,
             PrimaryButton(
-              onPressed: () =>
-                  // * Pop all routes in the navigation stack until the home
-                  // * screen is reached.
-                  Navigator.of(context).popUntil((route) => route.isFirst),
+              onPressed: () => context.goNamed(AppRoute.home.name),
+              // * Pop all routes in the navigation stack until the home
+              // * screen is reached.
+              //   Navigator.of(context).popUntil((route) => route.isFirst),
               text: 'Go Home'.hardcoded,
             )
           ],

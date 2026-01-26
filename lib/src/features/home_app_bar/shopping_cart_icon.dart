@@ -2,7 +2,6 @@ import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../constants/app_sizes.dart';
-import '../shopping_cart/shopping_cart_screen.dart';
 
 /// Shopping cart icon with items count badge
 class ShoppingCartIcon extends StatelessWidget {
@@ -63,10 +62,7 @@ class ShoppingCartIconBadge extends StatelessWidget {
           // * textScaleFactor. This is to prevent the text from growing bigger
           // * than the available space.
           textScaler: const TextScaler.linear(1.0),
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
+import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../common_widgets/custom_text_button.dart';
 import '../../common_widgets/responsive_two_column_layout.dart';
 import '../../constants/app_sizes.dart';
@@ -34,18 +36,19 @@ class LeaveReviewAction extends StatelessWidget {
             columnCrossAxisAlignment: CrossAxisAlignment.center,
             startContent: Text('Purchased on $dateFormatted'.hardcoded),
             endContent: CustomTextButton(
-              text: 'Leave a review'.hardcoded,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(color: Colors.green[700]),
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => LeaveReviewScreen(productId: productId),
-                ),
-              ),
-            ),
+                text: 'Leave a review'.hardcoded,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.green[700]),
+                //   onPressed: () => Navigator.of(context).push(
+                //     MaterialPageRoute(
+                //       fullscreenDialog: true,
+                //       builder: (_) => LeaveReviewScreen(productId: productId),
+                //     ),
+                //   ),
+                onPressed: () => context.goNamed(AppRoute.leaveReview.name,
+                    pathParameters: {"id": productId})),
           ),
           gapH8,
         ],

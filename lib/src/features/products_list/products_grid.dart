@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'package:ecommerce_app_firebase_riverpod/src/features/products_list/product_card.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
+import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:go_router/go_router.dart';
 import '../../constants/app_sizes.dart';
 import '../../constants/test_products.dart';
 import '../product_page/product_screen.dart';
@@ -27,13 +29,14 @@ class ProductsGrid extends StatelessWidget {
             itemBuilder: (_, index) {
               final product = products[index];
               return ProductCard(
-                product: product,
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => ProductScreen(productId: product.id),
-                  ),
-                ),
-              );
+                  product: product,
+                  // onPressed: () => Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (_) => ProductScreen(productId: product.id),
+                  //   ),
+                  // ),
+                  onPressed: () => context.goNamed(AppRoute.product.name,
+                      pathParameters: {"id": product.id}));
             },
           );
   }
