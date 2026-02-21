@@ -2,7 +2,7 @@ import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcode
 import 'package:ecommerce_app_firebase_riverpod/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'features/products_list/products_list_screen.dart';
+import 'features/products/presentation/products_list/products_list_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
