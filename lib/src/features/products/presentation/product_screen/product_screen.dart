@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_firebase_riverpod/src/features/products/data/fake_products_repository.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/features/products/presentation/product_screen/product_average_rating.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/features/reviews/presentation/product_reviews/product_reviews_list.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
@@ -22,8 +23,8 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Read from data source
-    final product =
-        kTestProducts.firstWhere((product) => product.id == productId);
+    final product = FakeProductsRepository.instance.getProduct(productId);
+
     return Scaffold(
       appBar: const HomeAppBar(),
       body: product == null
@@ -67,8 +68,7 @@ class ProductDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(product.title,
-                  style: Theme.of(context).textTheme.titleLarge),
+              Text(product.title, style: Theme.of(context).textTheme.titleLarge),
               gapH8,
               Text(product.description),
               // Only show average if there is at least one rating
@@ -79,8 +79,7 @@ class ProductDetails extends StatelessWidget {
               gapH8,
               const Divider(),
               gapH8,
-              Text(priceFormatted,
-                  style: Theme.of(context).textTheme.headlineSmall),
+              Text(priceFormatted, style: Theme.of(context).textTheme.headlineSmall),
               gapH8,
               LeaveReviewAction(productId: product.id),
               const Divider(),
