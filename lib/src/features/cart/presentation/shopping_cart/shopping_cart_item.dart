@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:ecommerce_app_firebase_riverpod/src/features/products/data/fake_products_repository.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/localization/string_hardcoded.dart';
 import 'package:ecommerce_app_firebase_riverpod/src/features/cart/domain/item.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,6 @@ class ShoppingCartItem extends StatelessWidget {
     this.isEditable = true,
   });
 
-
   /// if true, an [ItemQuantitySelector] and a delete button will be shown
   /// if false, the quantity will be shown as a read-only label (used in the
   /// [PaymentPage])
@@ -33,8 +33,7 @@ class ShoppingCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Read from data source
-    final product =
-        kTestProducts.firstWhere((product) => product.id == item.productId);
+    final product = FakeProductsRepository.instance.getProduct(item.productId)!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Sizes.p8),
       child: Card(
